@@ -1,0 +1,45 @@
+{
+  "name": "toystore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pm2 start app.js --watch --interpreter babel-node",
+    "db:migrate": "sequelize --config config/sequelizeConfig.js db:migrate",
+    "compile": "babel . --out-dir build --source-maps --watch --ignore node_modules,build,migrations,seeders,tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingpop/eventist-micro1.git"
+  },
+  "author": "Babatunde Adeyemi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codingpop/eventist-micro1/issues"
+  },
+  "homepage": "https://github.com/codingpop/eventist-micro1#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^7.0.4",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "pm2": "^2.10.2",
+    "sequelize": "^4.37.6"
+  }
+}
