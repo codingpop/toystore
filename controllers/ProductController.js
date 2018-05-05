@@ -53,7 +53,7 @@ export default class ProductController {
       const { name, stock, description } = req.body;
       const { id } = req.params;
 
-      await this.Product.update({
+      const result = await this.Product.update({
         name,
         stock,
         description,
@@ -61,12 +61,20 @@ export default class ProductController {
         where: { id },
       });
 
-      res.status(200).json({
-        product: {
-          id,
-          ...req.body,
-        },
-      });
+      if (result[0] === 1) {
+        res.status(200).json({
+          product: {
+            id,
+            ...req.body,
+          },
+        });
+      } else {
+        const err = new Error();
+        err.name = 'NotFoundError';
+        err.message = 'product does not exist';
+
+        throw err;
+      }
     } catch (err) {
       next(err);
     }

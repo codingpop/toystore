@@ -69,7 +69,6 @@ export default class Guard {
    * @returns {void}
    */
   static admin(req, res, next) {
-    req.user.role = 'admin'
     if (req.user.role !== 'admin') {
       const err = new Error();
       err.name = 'AuthorizationError';

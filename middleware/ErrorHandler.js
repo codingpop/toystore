@@ -86,7 +86,6 @@ class ErrorHandler {
    * @returns {Object} - Error response
    */
   static serverError(err, res) {
-    console.log(err);
     return res.status(500).json(err);
   }
 }

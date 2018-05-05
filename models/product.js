@@ -18,8 +18,13 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  Product.associate = function(models) {
-    // associations can be defined here
+
+  Product.associate = (models) => {
+    Product.belongsToMany(models.Order, {
+      through: 'product_order',
+      as: 'order',
+    });
   };
+
   return Product;
 };

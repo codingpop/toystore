@@ -63,9 +63,5 @@ export default (sequelize, DataTypes) => {
     user.password = await User.hashPassword(user.password);
   });
 
-  User.associate = function (models) {
-    // associations can be defined here
-  };
-
   return User;
 };
