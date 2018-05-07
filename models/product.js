@@ -21,8 +21,8 @@ export default (sequelize, DataTypes) => {
 
   Product.associate = (models) => {
     Product.belongsToMany(models.Order, {
-      through: 'product_order',
-      as: 'order',
+      through: 'ProductOrder',
+      as: 'Fufu',
     });
   };
 

@@ -9,13 +9,18 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
   }, {});
 
   Order.associate = (models) => {
     Order.belongsTo(models.User);
+
     Order.belongsToMany(models.Product, {
-      through: 'product_order',
-      as: 'order',
+      through: 'ProductOrder',
+      as: 'Fufu',
     });
   };
 

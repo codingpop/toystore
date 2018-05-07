@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/users', routes.auth);
 app.use('/api/v1/products', routes.product);
+app.use('/api/v1/orders', routes.order);
 
 app.get('/', (req, res) => res.json({ message: 'Welcome' }));
 

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pm2 start app.js --watch --interpreter babel-node",
     "db:migrate": "sequelize --config config/sequelizeConfig.js db:migrate",
-    "compile": "babel . --out-dir build --source-maps --watch --ignore node_modules,build,migrations,seeders,tests"
+    "compile": "babel . --out-dir build --source-maps --watch --ignore node_modules,build,migrations,seeders,tests",
+    "heroku-postbuild": "npm install -g sequelize-cli && npm run db:migrate"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
     "url": "https://github.com/codingpop/eventist-micro1/issues"
   },
   "homepage": "https://github.com/codingpop/eventist-micro1#readme",
+  "engines": {
+    "node": "10.0.0"
+  },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -40,6 +44,7 @@
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "pm2": "^2.10.2",
+    "sendgrid": "^5.2.3",
     "sequelize": "^4.37.6"
   }
 }

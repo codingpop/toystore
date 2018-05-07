@@ -94,6 +94,22 @@ class JoiSchemas {
       },
     };
   }
+
+  /**
+   * Generates schema for get product req.param validation
+   *
+   * @param {Object} Joi
+   *
+   * @returns {Object} order JOI schema
+   */
+  static order(Joi) {
+    return {
+      body: {
+        productId: Joi.string().guid({ version: 'uuidv4' }).required(),
+        quantity: Joi.number().min(1).required(),
+      },
+    };
+  }
 }
 
 export default JoiSchemas;

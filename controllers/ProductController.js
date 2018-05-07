@@ -1,5 +1,5 @@
 /**
- * Product class
+ * ProductController class
  */
 export default class ProductController {
   /**

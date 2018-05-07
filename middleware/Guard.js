@@ -1,15 +1,12 @@
+import jwt from 'jsonwebtoken';
+
+import { User } from '../models';
+import appConfig from '../config/appConfig';
+
 /**
  * API Gaurd class
  */
 export default class Guard {
-  /**
-   * @param {Object} dependencies - Guard's dependencies
-   */
-  constructor(dependencies) {
-    this.User = dependencies.User;
-    this.jwt = dependencies.jwt;
-    this.jwtSecret = dependencies.jwtSecret;
-  }
   /**
    * Verifies JWT
    *
@@ -21,14 +18,14 @@ export default class Guard {
    *
    * @returns {void}
    */
-  async verifyToken(req, res, next) {
+  static async verifyToken(req, res, next) {
     try {
       const { token } = req.headers;
 
       if (token) {
-        const payload = await this.jwt.verify(token, this.jwtSecret);
+        const payload = await jwt.verify(token, appConfig.jwtSecret);
 
-        const { dataValues } = await this.User.findById(payload.id);
+        const { dataValues } = await User.findById(payload.id);
 
         if (dataValues) {
           req.user = dataValues;
